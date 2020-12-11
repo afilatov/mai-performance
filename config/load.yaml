@@ -1,0 +1,28 @@
+overload:
+  enabled: true
+  package: yandextank.plugins.DataUploader
+  token_file: /var/loadtest/token.file
+core:
+  artifacts_dir: /var/loadtest/res
+  artifacts_base_dir: /var/loadtest/res
+phantom:
+  address: 192.168.64.126:80
+  load_profile:
+    load_type: rps
+    schedule: line(1, 500, 100s)
+  loop: -1
+  headers:
+    - 'Content-Type: application/json'
+    - 'Host: 192.168.64.126'
+  ammo_limit: -1
+  timeout: 1s
+  ammofile: ammo.file
+  ammo_type: uripost
+  writelog: all
+  header_http: "1.1"
+rcheck:
+  enabled: false
+rcassert:
+  enabled: false
+telegraf:
+  enabled: false

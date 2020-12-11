@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: test-service-service
+spec:
+  selector:
+    app: test-service
+  ports:
+    - protocol: TCP
+      name: web
+      port: 8080
+  type: ClusterIP

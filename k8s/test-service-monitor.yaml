@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: test-service-monitor
+  namespace: monitoring
+  labels:
+    app: test-service-monitor
+spec:
+  selector:
+    matchLabels:
+      app: test-service
+  namespaceSelector:
+    matchNames:
+      - services
+  endpoints:
+    - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      targetPort: 8080
+      path: /metrics
+      interval: 30s
