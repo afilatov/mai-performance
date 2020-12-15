@@ -9,7 +9,7 @@ phantom:
   address: 192.168.64.126:80
   load_profile:
     load_type: rps
-    schedule: line(1, 500, 100s)
+    schedule: const(1, 100, 1m)
   loop: -1
   headers:
     - 'Content-Type: application/json'
@@ -20,6 +20,7 @@ phantom:
   ammo_type: uripost
   writelog: all
   header_http: "1.1"
+  instances: 3
 rcheck:
   enabled: false
 rcassert:
